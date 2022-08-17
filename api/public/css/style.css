@@ -1,0 +1,34 @@
+html > * {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    background-color: black;
+}
+
+.title {
+    color: purple;
+    font-size: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 2px 2px #ff0000;
+}
+
+.solomon-seal {
+    filter: drop-shadow(20px 20px 20px purple)
+}
+
+.sigil-form {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.test-name-space {
+    color:blueviolet;
+}

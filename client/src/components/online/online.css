@@ -1,0 +1,23 @@
+/*these were originally created in rightbar.css, but we eventually made a new "online" component that actually contains these elements, so they were moved to this new online.css file */
+
+.rightbarProfileImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.rightbarOnline {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: limegreen;
+    position: absolute;
+    top: -2;
+    right: 0;
+    border: 2px solid white;
+}
+
+.rightbarUsername {
+    font-weight: 500;
+}
