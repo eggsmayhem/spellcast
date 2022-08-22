@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import "./register.css"
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 export default function Register() {
     const username = useRef()
@@ -37,6 +37,10 @@ export default function Register() {
             
         }
       } 
+
+    //   const sendToLogin = () => {
+
+    //   }
 // login mechanism seems a bit buggy at times. Play around with this more
   return (
     <div className = "login">
@@ -53,7 +57,9 @@ export default function Register() {
                     <input placeholder="Verify Password" required ref= {passwordVerify} className="loginInput" type="password" minLength="6"/>
 
                     <button className="loginButton" type="submit">Sign Up</button>
-                    <button className="loginRegister">Log in</button>
+                    <Link to = "/login" className = "loginLink">
+                        <button className="loginRegister" >Log in</button>
+                    </Link>
                 </form>
             </div>
         </div>

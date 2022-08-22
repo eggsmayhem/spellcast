@@ -11,6 +11,11 @@ export default function Topbar() {
     // hook to get current user's topbar from Context API
     const {user} = useContext(AuthContext)
     const PF = process.env.REACT_APP_PUBLIC_FOLDER
+
+    const logoutHandler = () => {
+        window.localStorage.clear()
+        window.location.reload()
+    }
     return (
         <div className="topbarContainer">
             <div className="topbarLeft">
@@ -30,6 +35,7 @@ export default function Topbar() {
                     <span className="topbarLink">Timeline</span>
                 </div>
                 <div className="topbarIcons">
+                    {user && <button className="topbarLogoutButton" onClick={logoutHandler}>Log Out</button>}
                     <div className="topbarIconItem">
                         <PersonIcon/>
                         <span className="topbarIconBadge">1</span>

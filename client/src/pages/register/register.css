@@ -81,3 +81,9 @@
     font-weight: 500;
     cursor: pointer;
 }
+
+.loginLink {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}

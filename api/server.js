@@ -38,6 +38,8 @@ const morgan = require('morgan');
 const userRoute = require('./routes/users')
 const authRoute = require('./routes/auth')
 const spellRoute = require('./routes/spells')
+const conversationRoute = require('./routes/conversations')
+const messageRoute = require('./routes/messages')
 //import multer to upload files locally on test server before migrating to cloud
 const multer = require('multer')
 const path = require('path')
@@ -95,6 +97,8 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
 app.use('/api/users', userRoute);
 app.use('/api/auth', authRoute);
 app.use('/api/spells', spellRoute)
+app.use('/api/conversations', conversationRoute)
+app.use('/api/messages', messageRoute)
 
 
 app.listen(PORT, () =>{
