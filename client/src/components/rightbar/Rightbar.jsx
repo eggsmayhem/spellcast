@@ -1,7 +1,7 @@
 import './rightbar.css' 
 import {Users} from '../../dummyData'
 import Online from "../online/Online"
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext, useRef } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios'
 import { LinearProgress } from '@mui/material'
@@ -9,6 +9,7 @@ import Add from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Link } from 'react-router-dom'
 import Person from '@mui/icons-material/Person'
+import io from 'socket.io-client'
 
 
 export default function Rightbar({ user }) {
@@ -23,9 +24,24 @@ export default function Rightbar({ user }) {
     const {user: currentUser, dispatch} = useContext(AuthContext)
 
     const [followed, setFollowed] = useState(currentUser.following.includes(user?._id))
+
+
     // TEST BEGIN
-    
+    //check for friends that are online for HOME RIGHTBAR
+    const [onlineUsers, setOnlineUsers] = useState([])
+    const socket = useRef()
+
+    useEffect(()=> {
+        socket.current = io("ws://localhost:8900")
+        socket.current.emit("addUser", currentUser._id)
+        socket.current.on("getUsers", users=> {
+            //detemine which users the currentUser follows are online to pass to the ChatOnline component
+            setOnlineUsers(currentUser.following.filter(f=>users.some(u=>u.userId === f)))
+        })
+    }, [currentUser])
     // TEST END
+
+
     // const [followed, setFollowed] = useState(currentUser.following.includes(user?._id))
 
     useEffect(() => {
@@ -41,17 +57,26 @@ export default function Rightbar({ user }) {
     // fetch relevant friend info from API 
     useEffect(() => {
         // nested async function as useEffect cannot directly be async
+        //get the friends of the profile that is being visited
         const getFriends = async () => {
             try {
                 const friendList = await axios.get('/users/friends/'+user?._id)
                 setFriends(friendList.data)
+                console.log("Incoming friendList")
+                console.log(friendList.data)
             }
             catch(err) {
                 console.log(err)
             }
         }
+        
         getFriends()
+        
     }, [user?._id])
+
+    // EXPERIMENTAL
+
+    // END EXPERIMENTAL
 
     // Could do above, but send currentUser._id, check followings, and see if user._id is followed, and use that to set the state
     
@@ -85,9 +110,10 @@ export default function Rightbar({ user }) {
                 <img className = "rightbarAd" src={`${PF}/ad.png`} alt="" />
                 <h4 className="rightbarTitle">Online Friends</h4>
                 <ul className="rightbarFriendList">
-                    {Users.map(u=>(
-                    <Online key = {u.id} user={u} />
-                     ))}
+                    {/* {onlineUsers.map(u=>(
+                    // <Online onlineUsers = {onlineUsers} currentId = {currentUser._id} key = {u._id} user={u} />
+                    <Online onlineUsers = {onlineUsers} currentId = {currentUser._id}/>
+                     ))} */}
                 </ul>
             </>
         )
