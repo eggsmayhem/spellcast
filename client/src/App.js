@@ -25,7 +25,7 @@ function App() {
         <Route path="/profile/:username" element={<Profile/>}/>
         <Route path="/register" element={user ? <Navigate to="/" />: <Register/>}/>
         <Route path="/messenger" element={!user ? <Navigate to="/" />: <Messenger/>}/>
-        <Route path="/editprofile" element={!user ? <ProfileEdit/> : <Register/>}/>
+        <Route path="/editprofile/:username" element={user ? <ProfileEdit/> : <Register/>}/>
       </Routes>
     </Router>
   )

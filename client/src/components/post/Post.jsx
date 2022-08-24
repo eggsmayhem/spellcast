@@ -51,6 +51,15 @@ export default function Post({post}) {
         //toggle between liked and disliked
         setIsLiked(!isLiked)
     }
+
+    // const dislikeHandler = () = {
+    //     try {
+
+    //     }
+    //     catch(err) {
+
+    //     }
+    // }
   return (
     <div className="post">
         <div className="postWrapper">
@@ -72,8 +81,9 @@ export default function Post({post}) {
             </div>
             <div className="postBottom">
                 <div className="postBottomLeft">
-                    <img className = "likeIcon" src={`${PF}like.png`} onClick={likeHandler} alt="" />
-                    <img className = "likeIcon" src={`${PF}heart.png`} onClick={likeHandler} alt="" />
+                    <img className = "likeIcon" src={`${PF}realeyenobg.png`} onClick={likeHandler} alt="" />
+                    {/* heart will become dislike */}
+                    <img className = "likeIcon" src={`${PF}realeyenobginvert.png`} onClick={likeHandler} alt="" />
                     <span className="postLikeCounter">{like}</span>
                 </div>
                 <div className="postBottomRight">

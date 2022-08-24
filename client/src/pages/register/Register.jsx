@@ -9,6 +9,8 @@ export default function Register() {
     const password = useRef()
     const passwordVerify = useRef()
 
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER
+
     //hook to redirect user after a new user is created
     const navigate = useNavigate()
 
@@ -46,7 +48,9 @@ export default function Register() {
     <div className = "login">
         <div className="loginWrapper">
             <div className="loginLeft">
-                <h3 className="loginLogo">SpellCast</h3>
+                {/* <h3 className="loginLogo">SpellCast</h3> */}
+                <img src={PF + 'spellcasttitle.png'} alt="" className="loginLogo" />
+                <img src={PF + 'orospinfast.gif'} alt="" className="snakeLogo"/>
                 <span className="loginDesc">What spells are you casting today?</span>
             </div>
             <div className="loginRight">

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Spell = require('../models/Spell')
+const Post = require('../models/Post')
 const User = require('../models/User')
 
 // router.get('/', (req, res) => {
@@ -9,10 +9,10 @@ const User = require('../models/User')
 //create a post
 
 router.post("/", async (req, res) => {
-    const newSpell = new Spell(req.body) 
+    const newPost = new Post(req.body) 
     try {
-        const savedSpell = await newSpell.save()
-        res.status(200).json(savedSpell)
+        const savedPost = await newPost.save()
+        res.status(200).json(savedPost)
     }
     catch(err) {
         res.status(500).json(err)
@@ -21,14 +21,14 @@ router.post("/", async (req, res) => {
 //update a post
 router.put("/:id", async (req, res) => {
     try {
-        const spell = await Spell.findById(req.params.id)
-        if (spell.userId === req.body.userId) {
-            await spell.updateOne({$set:req.body})
-            res.status(200).json("The Spell has been updated")
+        const post = await Post.findById(req.params.id)
+        if (post.userId === req.body.userId) {
+            await post.updateOne({$set:req.body})
+            res.status(200).json("The Post has been updated")
 
         }
         else {
-            res.status(403).json("You can only update your own spells")
+            res.status(403).json("You can only update your own posts")
         }
 
     }
@@ -39,14 +39,14 @@ router.put("/:id", async (req, res) => {
 //delete a post
 router.delete("/:id", async (req, res) => {
     try {
-        const spell = await Spell.findById(req.params.id)
-        if (spell.userId === req.body.userId) {
+        const post = await Post.findById(req.params.id)
+        if (post.userId === req.body.userId) {
             await spell.deleteOne()
-            res.status(200).json("The Spell has been deleted")
+            res.status(200).json("The Post has been deleted")
 
         }
         else {
-            res.status(403).json("You can only delete your own spells")
+            res.status(403).json("You can only delete your own Post")
         }
 
     }
@@ -58,13 +58,13 @@ router.delete("/:id", async (req, res) => {
 
 router.put("/:id/like", async(req, res) =>{
     try {
-        const spell = await Spell.findById(req.params.id)
-        if (!spell.likes.includes(req.body.userId)) {
-            await spell.updateOne({$push: {likes: req.body.userId}})
+        const post = await Post.findById(req.params.id)
+        if (!post.likes.includes(req.body.userId)) {
+            await post.updateOne({$push: {likes: req.body.userId}})
             res.status(200).json("Post has been liked")
         }
         else {
-            await spell.updateOne({$pull:{likes:req.body.userId}})
+            await post.updateOne({$pull:{likes:req.body.userId}})
             res.status(200).json("This post has been disliked")
         }
     }
@@ -72,11 +72,13 @@ router.put("/:id/like", async(req, res) =>{
         res.status(500).json(err)
     }
 } )
+
+//dislike a post
 //get a post
 router.get("/:id", async(req, res) => {
     try {
-        const spell = await Spell.findById(req.params.id)
-        res.status(200).json(spell)
+        const post = await Post.findById(req.params.id)
+        res.status(200).json(post)
     }
     catch(err) {
         res.status(500).json(err)
@@ -88,13 +90,13 @@ router.get("/:id", async(req, res) => {
 router.get("/timeline/:userId", async(req, res) => {
     try {
         const currentUser = await User.findById(req.params.userId)
-        const userSpells = await Spell.find({userId: currentUser._id})
-        const friendSpells = await Promise.all(
+        const userPosts = await Post.find({userId: currentUser._id})
+        const friendPosts = await Promise.all(
             currentUser.following.map(friendId=> {
-                return Spell.find({userId: friendId})
+                return Post.find({userId: friendId})
             })
         )
-        res.status(200).json(userSpells.concat(...friendSpells))
+        res.status(200).json(userPosts.concat(...friendPosts))
     }
     catch(err) {
         res.status(500).json(err)
@@ -105,8 +107,8 @@ router.get("/timeline/:userId", async(req, res) => {
 router.get("/profile/:username", async(req, res) => {
     try {
         const user = await User.findOne({username: req.params.username})
-        const spells = await Spell.find({userId: user._id})
-        res.status(200).json(spells)
+        const posts = await Post.find({userId: user._id})
+        res.status(200).json(posts)
     }
     catch(err) {
         res.status(500).json(err)

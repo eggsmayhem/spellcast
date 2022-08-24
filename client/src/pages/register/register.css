@@ -1,7 +1,7 @@
 .login {
     width: 100vw;
     height: 100vh;
-    background-color: #f0f2f5;
+    background-color: rgb(97, 81, 146);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,16 +25,22 @@
     font-weight: bold;
     color: #1775ee;
     margin-bottom: 10px;
+    filter: drop-shadow(0 -6mm 4mm rgb(160, 0, 210));
+}
+
+.snakeLogo {
+    filter: drop-shadow(0 -6mm 4mm rgb(160, 0, 210));
 }
 
 .loginDesc {
     font-size: 24px;
+    align-self: center;
 }
 
 .loginBox {
     height: 400px;
     padding: 20px;
-    background-color: white;
+    background-color: rgb(136, 124, 175);
     border-radius: 10px;
     display: flex;
     flex-direction: column;

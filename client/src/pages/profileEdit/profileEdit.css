@@ -1,0 +1,89 @@
+.profile {
+    display: flex;
+}
+
+.profileRight {
+    flex: 9;
+}
+
+.profileCover {
+    height: 320px;
+    /*relative positioning to allow profile img to be on top*/
+    position: relative;
+    background-color: rgb(97, 81, 146);
+}
+
+.profileCoverImg {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.editCoverImg {
+    height: 62px;
+    width: 62px;
+    border-radius: 50%;
+    background-color: hsla(98, 89%, 94%, 0.52);
+    position: absolute;
+    bottom: 12%;
+    left: 15%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.editProfileImg {
+    height: 52px;
+    width: 52px;
+    border-radius: 50%;
+    background-color: hsla(98, 89%, 94%, 0.52);
+    position: absolute;
+    bottom: 8%;
+    left: 42%;
+    z-index: 100;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    font-weight: bold;
+}
+.editCoverImg:hover {
+    cursor: pointer;
+}
+
+.profileUserImg {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    /*absoute positioning so profile image can sit on top of cover img*/
+    position: absolute;
+    /*center*/
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 150px;
+    border: 3px solid white;
+}
+
+.profileInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(97, 81, 146);
+}
+
+.profileInfoName {
+    font-size: 24px;
+}
+
+.profileInfoDesc {
+    font-weight: 300;
+}
+.profileRightBottom {
+    display: flex;
+}

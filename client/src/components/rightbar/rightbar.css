@@ -1,9 +1,11 @@
 .rightbar {
     flex: 3.5;
+    background-color: rgb(97, 81, 146);
 }
 
 .rightbarWrapper {
     padding: 20px 0 0;
+    background-color: rgb(97, 81, 146);
 }
 
 .birthdayContainer {

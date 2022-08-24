@@ -8,6 +8,8 @@
 
 .shareWrapper {
     padding: 10px;
+    background-color: rgb(136, 124, 175);
+    border-radius: 10px;
 }
 
 .shareTop {

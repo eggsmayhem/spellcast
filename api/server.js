@@ -37,7 +37,7 @@ const morgan = require('morgan');
 
 const userRoute = require('./routes/users')
 const authRoute = require('./routes/auth')
-const spellRoute = require('./routes/spells')
+const postRoute = require('./routes/posts')
 const conversationRoute = require('./routes/conversations')
 const messageRoute = require('./routes/messages')
 //import multer to upload files locally on test server before migrating to cloud
@@ -96,7 +96,7 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
 //reaching from index.js to the routes in the routes folder and connecting them to the Route variables created at the start of this file 
 app.use('/api/users', userRoute);
 app.use('/api/auth', authRoute);
-app.use('/api/spells', spellRoute)
+app.use('/api/posts', postRoute)
 app.use('/api/conversations', conversationRoute)
 app.use('/api/messages', messageRoute)
 

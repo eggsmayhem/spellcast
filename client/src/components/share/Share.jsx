@@ -37,7 +37,7 @@ export default function Share() {
             }
         }
         try{
-            await axios.post('/spells', newPost)
+            await axios.post('/posts', newPost)
             window.location.reload()
         }
         catch(err) {
