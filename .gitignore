@@ -1,0 +1,11 @@
+client/node_modules
+client/.env
+client/public/assets/person
+client/public/assets/post
+client/public/assets/ad.png
+client/public/assets/gift.png
+client/public/assets/heart.png
+client/public/assets/like.png
+
+api/node_modules
+api/

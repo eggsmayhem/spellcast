@@ -77,7 +77,14 @@ const updateCoverImg = async e => {
                         {/* <label htmlFor="file" className="shareOption" on>
 
                           <input style={{display:"none"}} type="file" id="file" accept=".png, .jpeg" onClick={e=>setFile(e.target.files[0])}/> */}
-                          <div className="editCoverImg" role="img" alt="change cover photo" onClick={updateCoverImg}>+</div>
+                          {/* <div className="editCoverImg" role="img" alt="change cover photo" onClick={updateCoverImg}>+</div> */}
+                          <form className="editCoverImg" onSubmit={updateCoverImg}>
+                            <label htmlFor="file">
+                              <div>+</div>
+                              <input style={{display:"none"}} type="file" id="file" accept=".png, .jpeg" onChange={e=>setFile(e.target.files[0])}/>
+                              <button type="submit">update</button>
+                            </label>
+                          </form>
                         {/* </label> */}
                         <div className="editProfileImg" role="img" alt="change cover photo">+</div>
                         <img className = "profileUserImg" src={user.profilePicture ? PF + user.profilePicture : PF+"person/noProfile.png"} alt="" />
