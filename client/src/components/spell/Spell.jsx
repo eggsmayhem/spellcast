@@ -1,5 +1,5 @@
 import axios from 'axios'
-import "./post.css"
+import "./spell.css"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 // import { Users } from "../../dummyData"
 import { useEffect, useState, useContext } from "react"
@@ -10,9 +10,9 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext';
 
 
-export default function Post({post}) {
+export default function Spell({spell}) {
     //use state to dynamically render likes 
-    const [like, setLike] = useState(post.likes.length)
+    const [like, setLike] = useState(spell.likes.length)
     //defaults to false before a post has been liked
     const [isLiked, setIsLiked] = useState(false)
 
@@ -25,24 +25,24 @@ export default function Post({post}) {
 
     //check database so front end knows whether to render a like or a dislike
     useEffect(() =>{
-        setIsLiked(post.likes.includes(currentUser._id))
-    }, [currentUser._id, post.likes])
+        setIsLiked(spell.likes.includes(currentUser._id))
+    }, [currentUser._id, spell.likes])
 
-    //use effect to grab the posts we want
+    //use effect to grab the posts we want (get the user who created each spell)
     useEffect(()=> {
         const fetchUser = async() => {
-            const res = await axios.get(`/users?userId=${post.userId}`)
+            const res = await axios.get(`/users?userId=${spell.userId}`)
             setUser(res.data)
             // const res = 6
             console.log(res)
         }
         // console.log('feed rendered')
         fetchUser()
-    },[post.userId])
+    },[spell.userId])
 
     const likeHandler = () => {
         try {
-            axios.put('/posts/'+post._id+'/like', {userId: currentUser._id})
+            axios.put('/spells/'+spell._id+'/like', {userId: currentUser._id})
         }
         catch(err) {
 
@@ -69,15 +69,15 @@ export default function Post({post}) {
                         <img className = "postProfileImg" src={user.profilePicture ? PF + user.profilePicture : PF+"person/noProfile.png"} alt="" />
                     </Link>
                     <span className="postUsername">{user.username}</span>
-                    <span className="postDate">{format(post.createdAt)}</span>
+                    <span className="postDate">{format(spell.createdAt)}</span>
                 </div>
                 <div className="postTopRight">
                     <MoreVertIcon/>
                 </div>
             </div>
             <div className="postCenter">
-                <span className="postText">{post?.desc}</span>
-                <img className = "postImg" src={PF+post.img} alt="" />
+                <span className="postText">{spell?.desc}</span>
+                <img className = "postImg" src={PF+spell.images[0]} alt="" />
             </div>
             <div className="postBottom">
                 <div className="postBottomLeft">
@@ -87,7 +87,7 @@ export default function Post({post}) {
                     <span className="postLikeCounter">{like}</span>
                 </div>
                 <div className="postBottomRight">
-                    <span className="postCommentText">{post.comment} comments</span>
+                    <span className="postCommentText">{spell.comment} comments</span>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import "./entityProfile.css"
-import Feed from "../../components/feed/Feed";
+import Entityfeed from "../../components/entityFeed/Entityfeed";
 import Entityrightbar from "../../components/entityRightbar/Entityrightbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
@@ -47,7 +47,7 @@ export default function EntityProfile() {
                 </div>
                 <div className="profileRightBottom">
                     {/* compare to conditional logic making different Rightbars for Profile and Timeline */}
-                    {/* <Feed username={username}/> */}
+                    <Entityfeed entityname={entityname}/>
                     {/* profile argument lets us know to lead ProfileRightbar from Rightbar.jsx */}
                     {/* <Rightbar user={user}/> */}
                     <Entityrightbar entity={entity}/>

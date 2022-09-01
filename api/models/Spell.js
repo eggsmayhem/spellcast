@@ -92,7 +92,7 @@ const SpellSchema = new mongoose.Schema({
     },
     friendliness: {
         type: Number,
-        require: true
+        require: false,
     },
     private: {
         type: Boolean,
