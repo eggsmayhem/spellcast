@@ -35,9 +35,14 @@ const SpellSchema = new mongoose.Schema({
         type: String,
     },
     //recommend that user Search to see if their entity already has a page. If so, use the standardized spelling. If not, they can create one. 
-    entity: {
-        type: String,
+
+    //when they post spell with entity, we will need to manually search through all entities to see if we have a name match, then put that entityId in a separate array
+    entities: {
+        type: Array,
         require: false,
+    },
+    entityIds: {
+        type: Array,
     },
     materials: {
         type: Array,
@@ -51,8 +56,12 @@ const SpellSchema = new mongoose.Schema({
         type: Array,
         require: true,
     },
-    img: {
-        type: String,
+    images: {
+        type: Array,
+    },
+    //we'll start with Youtube iframes for video, perhaps eventually move over to self-host, but this is the best cost-solution for now 
+    videos: {
+        type: Array,
     },
     desc: {
         type: String,

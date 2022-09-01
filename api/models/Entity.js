@@ -2,14 +2,23 @@ const mongoose = require('mongoose')
 
 const EntitySchema = new mongoose.Schema({
     //to enable cross-schema convos, I am currenly making a space for it in the Schema, then manually entering in, say, the userId in the JSON request body 
-    name: {
+    entityname: {
         type: String,
         require: true,
+    },
+    profileImg: {
+        type: String,
+    },
+    coverImg: {
+        type: String,
     },
     desc: {
         type: String,
     },
     placesOfOrigin: {
+        type: Array,
+    },
+    schoolsOfMagic: {
         type: Array,
     },
     languageGroup: {
@@ -26,11 +35,16 @@ const EntitySchema = new mongoose.Schema({
         type: Array,
     },
     //list of all spells working with an entity
+    //might not be necessary
     spellIds: {
         type: Array,
     },
-    //list of all general posts relating to a particular entity
+    //list of all general posts relating to a particular entity, may not be necessary
     postIds: {
+        type: Array,
+    },
+    //for now doing these by name, might switch to entityId
+    syncretisms: {
         type: Array,
     },
     friendliness: {

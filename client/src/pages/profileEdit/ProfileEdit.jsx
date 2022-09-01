@@ -36,6 +36,8 @@ export default function Profile() {
 
 const updateCoverImg = async e => {
   e.preventDefault()
+  // const saved = await setFile(e.target.files[0])
+
   const updateProfile = {
     userId: currentUser._id,
   }
@@ -81,7 +83,8 @@ const updateCoverImg = async e => {
                           <form className="editCoverImg" onSubmit={updateCoverImg}>
                             <label htmlFor="file">
                               <div>+</div>
-                              <input style={{display:"none"}} type="file" id="file" accept=".png, .jpeg" onChange={e=>setFile(e.target.files[0])}/>
+                              {/* <input style={{display:"none"}} type="file" id="file" accept=".png, .jpeg" onChange={e=>setFile(e.target.files[0])}/> */}
+                              <input style={{display:"none"}} type="file" id="file" accept=".png, .jpeg" onChange={e =>setFile(e.target.files[0])}/>
                               <button type="submit">update</button>
                             </label>
                           </form>
