@@ -13,6 +13,9 @@ const SpellSchema = new mongoose.Schema({
     type: {
         type: String,
     },
+    iframe: {
+        type: String,
+    },
     sigil: {
         type: String
     },
@@ -32,6 +35,9 @@ const SpellSchema = new mongoose.Schema({
     },
     //eventually practice getting user geolocation, or letting them override and set manually
     location: {
+        type: String,
+    },
+    direction: {
         type: String,
     },
     //recommend that user Search to see if their entity already has a page. If so, use the standardized spelling. If not, they can create one. 

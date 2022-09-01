@@ -38,6 +38,7 @@ const morgan = require('morgan');
 const userRoute = require('./routes/users')
 const authRoute = require('./routes/auth')
 const postRoute = require('./routes/posts')
+const spellRoute = require('./routes/spells')
 const conversationRoute = require('./routes/conversations')
 const messageRoute = require('./routes/messages')
 const entityRoute = require('./routes/entities')
@@ -101,6 +102,7 @@ app.use('/api/posts', postRoute)
 app.use('/api/conversations', conversationRoute)
 app.use('/api/messages', messageRoute)
 app.use('/api/entities', entityRoute)
+app.use('/api/spells', spellRoute)
 
 
 app.listen(PORT, () =>{

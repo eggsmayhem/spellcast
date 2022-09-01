@@ -29,6 +29,7 @@ export default function EntityProfile() {
 },[entityname])
 
   return (
+    
     <>
         <Topbar/>
         <div className = "profile">
@@ -54,5 +55,6 @@ export default function EntityProfile() {
             </div>
         </div>    
     </>
+   
   )
 }
