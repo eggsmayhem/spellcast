@@ -39,6 +39,9 @@ const UserSchema = new mongoose.Schema({
         type: Array,
         default: [],
     },
+    entitiesFollowing: {
+        type: Array,
+    },
     isAdmin: {
         type: Boolean,
         default: false,
@@ -59,6 +62,14 @@ const UserSchema = new mongoose.Schema({
         type: Number, 
         default: 0,
         enum: [0,1,2],
+    },
+    baseCoordinates: {
+        latitude: {
+            type: Number
+        },
+        longitude: {
+            type: Number
+        }
     }
 },
 { timestamps: true}

@@ -46,6 +46,13 @@ const entityRoute = require('./routes/entities')
 const multer = require('multer')
 const path = require('path')
 
+//enable logging
+// const MongoClient = require('mongodb').MongoClient;
+// const Logger = require('mongodb').Logger;
+// Logger.setLevel('info')
+	
+// mongoose.set('debug', true)
+
 dotenv.config();
 
 mongoose.connect(

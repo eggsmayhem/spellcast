@@ -53,6 +53,7 @@ router.get("/", async (req, res) => {
     const user = userId 
       ? await User.findById(userId) 
       : await User.findOne({username: username})
+    
     //create an object that enables you to return only the desired information from the user object (user._doc)
     const {password, updatedAt, ...other} = user._doc
     res.status(200).json(other)

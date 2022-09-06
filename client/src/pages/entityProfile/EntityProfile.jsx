@@ -3,10 +3,11 @@ import Entityfeed from "../../components/entityFeed/Entityfeed";
 import Entityrightbar from "../../components/entityRightbar/Entityrightbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 //enable dynamic fetching of users
 import { useParams } from 'react-router'
+import { AuthContext } from "../../context/AuthContext";
 
 export default function EntityProfile() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
@@ -14,6 +15,8 @@ export default function EntityProfile() {
   const [entity, setEntity] = useState({})
   //we can use username as it is defined as parameter in App.jsx
   const entityname = useParams().entityname
+
+  const user = useContext(AuthContext)
   
   
 
@@ -39,6 +42,7 @@ export default function EntityProfile() {
                     <div className="profileCover">
                         <img className = "profileCoverImg" src= {entity.coverImg ? PF + entity.coverImg : PF+"person/noCover.png"} alt="" />
                         <img className = "profileUserImg" src={entity.profileImg ? PF + entity.profileImg : PF+"person/noProfile.png"} alt="" />
+                        {/* <img className = "profileImgFrame" src = {PF+ "orospinfast.gif"} /> */}
                     </div>
                     <div className="profileInfo">
                         <h4 className = "profileInfoName">{entity.entityname}</h4>

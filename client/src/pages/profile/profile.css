@@ -1,5 +1,8 @@
 .profile {
     display: flex;
+    /* background-color: rgb(0, 0, 0); */
+    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 32%, rgba(0,212,255,1) 100%); */
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(146,63,244,1) 50%, rgba(0,0,0,0.13627449270723913) 100%);
 }
 
 .profileRight {
@@ -31,7 +34,7 @@
     right: 0;
     margin: auto;
     top: 150px;
-    border: 3px solid white;
+    border: 3px solid rgb(112, 20, 20);
 }
 
 .profileInfo {

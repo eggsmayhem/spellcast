@@ -51,7 +51,10 @@ const EntitySchema = new mongoose.Schema({
         type: Number,
         default: 0,
         enum: [1,2,3,4,5,6,7]
-    }
+    },
+    holyDays: {
+        type: Array,
+    },
 },
 {timestamps:true}
 )

@@ -33,7 +33,14 @@
     top: 150px;
     border: 3px solid white;
 }
-
+/* .profileImgFrame {
+    /* position: relative;
+    left: 35%;
+    bottom: 57%; */
+    /* position: absolute;
+    right: 1%;
+    top: 25%;
+} */ */
 .profileInfo {
     display: flex;
     flex-direction: column;

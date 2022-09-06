@@ -22,7 +22,9 @@
 
 .sidebarWrapper {
     padding: 20px;
-    background-color: rgb(97, 81, 146);
+    /* background-color: rgb(97, 81, 146); */
+    background-color: rgba(34, 18, 82, 0.375);
+    border: 1px solid rgb(78, 23, 78);
 }
 
 .sidebarList {
