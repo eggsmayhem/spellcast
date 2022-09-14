@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import Spell from '../spell/Spell'
 import Share from '../share/Share'
+import Makespell from '../makespell/Makespell'
 import './entityfeed.css' 
 // import {Posts} from "../../dummyData"
 
@@ -37,6 +38,7 @@ export default function Entityfeed({entityname}) {
                 ))} */}
                 {/* only render Share bar if user is on their own profile */}
                 {/* {(!username || username === user.username) && <Share/>} */}
+                <Makespell entityname = {entityname}/>
                  {spells.map((s)=> (
                     <Spell key = {s._id} spell = {s} />
                 ))}

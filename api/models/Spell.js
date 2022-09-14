@@ -98,6 +98,9 @@ const SpellSchema = new mongoose.Schema({
         type: Boolean,
         require: true,
     },
+    coordinates: {
+        type: Array
+    }
 },
 {timestamps:true}
 )

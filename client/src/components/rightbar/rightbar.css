@@ -1,5 +1,5 @@
 .rightbar {
-    flex: 3.5;
+    flex: 3;
     background-color: rgb(97, 81, 146);
 }
 
@@ -68,7 +68,7 @@
 .rightbarInfoKey {
     font-weight: 500;
     margin-right: 15px;
-    color: #555;
+    color: black;
 }
 
 .rightbarInfoValue {

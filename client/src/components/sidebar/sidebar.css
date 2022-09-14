@@ -1,5 +1,5 @@
 .sidebar {
-    flex: 3;
+    flex: 1.7;
     /*remove topbar height from view height */
     height: calc(100vh - 50px);
     overflow-y: scroll;
@@ -25,6 +25,7 @@
     /* background-color: rgb(97, 81, 146); */
     background-color: rgba(34, 18, 82, 0.375);
     border: 1px solid rgb(78, 23, 78);
+    color: hsl(0, 25%, 89%);
 }
 
 .sidebarList {
